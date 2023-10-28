@@ -10,12 +10,12 @@ const ContactList = ({ contacts, filter, onDeleteContact }) => {
   return (
   
     <ul>
-      {filteredContacts.map(({id, name, number}) => (
+      {filteredContacts.map(({id, name, phone}) => (
         <ContactListItem
           key={id}
           id={id}
           name={name}
-          number={number}
+          phone={phone}
           deleteContact={onDeleteContact}
         />
       ))}
@@ -23,11 +23,11 @@ const ContactList = ({ contacts, filter, onDeleteContact }) => {
 
 )}
 
-const ContactListItem = ({ id, name, number, deleteContact}) => (
+const ContactListItem = ({ id, name, phone, deleteContact}) => (
   
     <ContactItem>
       <ContactName>{name}</ContactName>
-      <ContactNumber>{number}</ContactNumber>
+      <ContactNumber>{phone}</ContactNumber>
       <DeleteBtn onClick={() => deleteContact(id)}>Delete</DeleteBtn>
     </ContactItem>
   

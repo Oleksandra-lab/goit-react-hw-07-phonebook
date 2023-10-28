@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import {nanoid} from 'nanoid'
 import { FormWrap, Form, Text, Input, Button} from './ContactForm.styled'
 
 const ContactForm = ({onAddContact}) => {
   
 const [dataForm, setDataForm] = useState({
     name: '',
-    number: '',
+    phone: '',
   })
   const handleInputChange = evt => {
     
@@ -18,12 +17,12 @@ const [dataForm, setDataForm] = useState({
 
   const handleSubmit = (evt) => {
       evt.preventDefault();
-      const { name, number} = dataForm;
+      const { name, phone} = dataForm;
 
       const newContact = {
-        id: nanoid(),
+        
         name: name,
-        number: number,
+        phone: phone,
     
       }
 
@@ -31,7 +30,7 @@ const [dataForm, setDataForm] = useState({
 
       setDataForm({
         name: '',
-        number: '',
+        phone: '',
       });
   
   };
@@ -58,10 +57,10 @@ const [dataForm, setDataForm] = useState({
             <Input
               onChange={handleInputChange}
               type="tel"
-              placeholder="Enter number"
+              placeholder="Enter phone number"
               
-              name="number"
-              value={dataForm.number}
+              name="phone"
+              value={dataForm.phone}
               required
             />
           </label>

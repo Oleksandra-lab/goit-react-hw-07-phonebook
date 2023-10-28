@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContacts, deleteContacts } from 'redux/contactsReducer';
+import { addContacts, requestAddContact, requestContacts, requestDeleteContact } from 'redux/contactsReducer';
 import { setFilter } from 'redux/filterReducer';
 
 const App = () => {
-  const contacts = useSelector(state => state.contacts.contacts);
+  const contacts = useSelector(state => state.contacts.items);
   const filter = useSelector(state => state.filter.filter);
   const dispatch = useDispatch();
+
+  useEffect( ( ) => {
+    dispatch(requestContacts())
+
+  }, [dispatch])
 
   const addContact = newContact => {
     const contactExist = contacts.some(
@@ -19,11 +24,11 @@ const App = () => {
       alert(`${newContact.name} is already in contacts.`);
       return;
     }
-    dispatch(addContacts(newContact));
+    dispatch( requestAddContact(newContact));
   };
 
   const deleteContact = id => {
-    dispatch(deleteContacts(id));
+    dispatch(requestDeleteContact(id));
   };
 
   const handleFilterChange = filter => {
