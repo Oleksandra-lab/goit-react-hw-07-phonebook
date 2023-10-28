@@ -3,7 +3,7 @@ import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContacts, requestAddContact, requestContacts, requestDeleteContact } from 'redux/contactsReducer';
+import { requestAddContact, requestContacts, requestDeleteContact } from 'redux/contactsReducer';
 import { setFilter } from 'redux/filterReducer';
 
 const App = () => {
